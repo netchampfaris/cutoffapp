@@ -1,0 +1,49 @@
+<ion-view title="Get My College">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-input item-select">
+        <div class="input-label">
+          Which CAP Round?
+        </div>
+        <select ng-model="choice.capround">
+          <option ng-repeat="option in caprounds" ng-value="option.id">{{ option.name }}</option>
+        </select>
+      </ion-item>
+      <ion-item class="item-input item-select">
+        <div class="input-label">
+          Choose University
+        </div>
+        <select ng-model="choice.university">
+          <option ng-repeat="option in universities" ng-value="option.id">{{ option.name }}</option>
+        </select>
+      </ion-item>
+      <ion-item>
+        <div class="input-label">
+          Choose Seat Type
+        </div>
+        <div class="button-bar bar-light">
+          <a class="button button-small" ng-class="{'button-positive': isActive('home')}" ng-click="setActive('home')">Home University</a>
+          <a class="button button-small" ng-class="{'button-positive': isActive('other_than_home')}" ng-click="setActive('other_than_home')">Other than Home</a>
+        </div>
+      </ion-item>
+      <ion-item class="item-input item-select">
+        <div class="input-label">
+          Choose category
+        </div>
+        <select ng-model="choice.category">
+          <option ng-repeat="option in categories" ng-value="option.id">{{ option.name }}</option>
+        </select>
+      </ion-item>
+      <ion-item class="item-input">
+        <div class="input-label">Rank in CAP Round</div>
+        <input type="number" placeholder="Enter your rank" ng-model="choice.rank">
+      </ion-item>
+      <div class="row">
+        <div class="col text-center">
+          <button class="button button-positive icon-left light" ng-click="getCollegeIDs()"><i class="icon ion-android-send"></i> Get Me College</button>
+        </div>
+      </div>
+    </ion-list>
+
+  </ion-content>
+</ion-view>

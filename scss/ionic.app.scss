@@ -15,6 +15,26 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+$stable:                          #F57C00 !default;
+$positive:                        #FF9800 !default;
+$calm:                            #FFE0B2 !default;
+$dark:                            #212121 !default;
+$balanced:                        #727272 !default;
+$assertive:                       #03A9F4 !default;
+$light:                           #FFFFFF !default;
+
+
+/*Navbar*/
+.logo-fix {
+  margin-top: 7px;
+}
+
+/*Main tab*/
+.radio-fix {
+  width: 50%;
+}
+
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
