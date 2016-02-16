@@ -1,7 +1,16 @@
 <ion-view title="Colleges">
   <ion-content>
-    <ion-item ng-repeat="college in colleges track by $index">
+    <div class="item item-divider">
+      Ambitious Colleges
+    </div>
+    <div class="item" ng-repeat="college in safeColgs | orderBy:'rank' | limitTo:4 track by $index" ng-click="colgDetail(college.id)">
       {{ college.college_name }}
-    </ion-item>
+    </div>
+    <div class="item item-divider">
+      Safe Colleges
+    </div>
+    <div class="item" ng-repeat="college in ambitiousColgs | orderBy:'rank' | limitTo:4 track by $index" ng-click="colgDetail(college.id)">
+      {{ college.college_name }}
+    </div>
   </ion-content>
 </ion-view>

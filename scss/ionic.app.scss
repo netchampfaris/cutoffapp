@@ -34,6 +34,15 @@ $light:                           #FFFFFF !default;
   width: 50%;
 }
 
+.item.tabs {
+  background: $light !important;
+
+  .tab-item {
+    color: $balanced !important;
+    border: 1px $balanced !important;
+  }
+}
+
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;

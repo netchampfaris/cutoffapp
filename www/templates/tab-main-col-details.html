@@ -1,0 +1,51 @@
+<ion-view title="Colleges">
+  <ion-content>
+    <div class="list card">
+      <div class="item item-text-wrap">
+        <h2>
+          {{college.college_name}}
+        </h2>
+        <p>Established {{college.year_of_establishment}}</p>
+      </div>
+      <div class="item item-body">
+        <h2>Address</h2>
+        <p>{{college.address}}</p>
+      </div>
+      <div class="item item-icon-left">
+        <i class="icon ion-ios-telephone"></i>
+        {{ college.phone }}
+      </div>
+      <div class="item item-icon-left">
+        <i class="icon ion-android-print"></i>
+        {{ college.fax }}
+      </div>
+      <div class="item item-icon-left">
+        <i class="icon ion-email"></i>
+        {{ college.email }}
+      </div>
+      <div class="item item-icon-left">
+        <i class="icon ion-android-globe"></i>
+        {{ college.website }}
+      </div>
+      <div class="item item-divider">
+        <div class="row">
+          <div class="col">
+            <h2>Fees</h2><p>{{college.fees}}</p>
+          </div>
+          <div class="col">
+            <h2>Intake</h2><p>{{college.intake}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col item-text-wrap">
+            <h2>Station</h2><p>{{ college.railway_station }}</p>
+          </div>
+          <div class="col">
+            <h2>Hostel</h2><p>{{(college.hostel)?'Yes':'No'}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

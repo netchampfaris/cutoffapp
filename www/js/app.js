@@ -3,8 +3,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var db = null;
-angular.module('cutoff', ['ionic', 'cutoff.controllers','cutoff.services', 'ngCordova'])
+var db1 = null, db2 = null, db3 = null;
+angular.module('cutoff', ['ionic', 'cutoff.controllers','cutoff.services', 'cutoff.directives', 'ngCordova'])
 
 .run(function($ionicPlatform, $cordovaSQLite) {
   $ionicPlatform.ready(function() {
@@ -22,12 +22,23 @@ angular.module('cutoff', ['ionic', 'cutoff.controllers','cutoff.services', 'ngCo
       StatusBar.styleDefault();
     }
 
-    window.plugins.sqlDB.copy("db.sqlite3",0, function() {
-      db = $cordovaSQLite.openDB("db.sqlite3");
+    var caproundDB = ['db.sqlite3'];  //add more dbs later
+
+    window.plugins.sqlDB.copy('db.sqlite3', 0, function() {
+      db1 = $cordovaSQLite.openDB('db.sqlite3');
     }, function(error) {
       console.error("There was an error copying the database: " + error);
-      db = $cordovaSQLite.openDB("db.sqlite3");
+      db1 = $cordovaSQLite.openDB('db.sqlite3');
     });
+
+    asset2sd.copyDir({
+        asset_directory: "www/docs",
+        destination_directory: "cutoffapp/docs"
+      },
+      function() { console.log('success'); },
+      function() { console.log('fail'); }
+    );
+
   });
 })
 
@@ -50,6 +61,7 @@ angular.module('cutoff', ['ionic', 'cutoff.controllers','cutoff.services', 'ngCo
 
       .state('tab.main', {
         url: '/main',
+        cache: false,
         views: {
           'tab-main': {
             templateUrl: 'templates/tab-main.html',
@@ -59,11 +71,26 @@ angular.module('cutoff', ['ionic', 'cutoff.controllers','cutoff.services', 'ngCo
       })
 
       .state('tab.main-colleges', {
-        url: '/main-colleges/:colgIDs',
+        url: '/main-colleges',
+        params: {
+          colgIDs: null,
+          university: null,
+          rank: null
+        },
         views: {
           'tab-main': {
             templateUrl: 'templates/tab-main-colleges.html',
             controller: 'CollegesCtrl'
+          }
+        }
+      })
+
+      .state('tab.main-col-details', {
+        url: '/main-col-details/:colgID',
+        views: {
+          'tab-main': {
+            templateUrl: 'templates/tab-main-col-details.html',
+            controller: 'CollegeDetailCtrl'
           }
         }
       })
@@ -97,12 +124,12 @@ angular.module('cutoff', ['ionic', 'cutoff.controllers','cutoff.services', 'ngCo
         }
       })
 
-      .state('tab.unknown', {
-        url: '/unknown',
+      .state('tab.syllabus', {
+        url: '/syllabus',
         views: {
-          'tab-unknown': {
-            templateUrl: 'templates/tab-unknown.html',
-            controller: 'UnknownCtrl'
+          'tab-syllabus': {
+            templateUrl: 'templates/tab-syllabus.html',
+            controller: 'SyllabusCtrl'
           }
         }
       });
